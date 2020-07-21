@@ -7,7 +7,7 @@ One time signup and login.
 
 ## Chat List
 Viewing all the chats with new messages, time displayed.
-![chatlist](images/chatlist.png)
+![chatlist](images/chatlist.png {width=10px height=10px})
 
 ## Chat
 The chat interface with minimilastic features

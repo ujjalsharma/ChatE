@@ -11,7 +11,7 @@ The chat interface with minimilastic features. <br /><br />
 ## Profiles
 View your account info and to update.<br />
 View other people profile also.<br />
-One time login/signup.<br />
+One time login/signup.<br /><br />
 <img src="images/login.png" alt="login" height="20%" width="20%">
 <img src="images/myprofile.png" alt="myprofile" height="20%" width="20%">
 <img src="images/updateprofile.png" alt="updateprofile" height="20%" width="20%">

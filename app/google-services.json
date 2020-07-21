@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1081226226513",
+    "firebase_url": "https://project-chate.firebaseio.com",
+    "project_id": "project-chate",
+    "storage_bucket": "project-chate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081226226513:android:e4a2549628a00ac8180170",
+        "android_client_info": {
+          "package_name": "com.chate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081226226513-m4ivo12nfg4qgqvq6ich1leuk63ib4ha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-fKTBEBh8NurfakkN69MPoSJ0iT1rvX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081226226513-m4ivo12nfg4qgqvq6ich1leuk63ib4ha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

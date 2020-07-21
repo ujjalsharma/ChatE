@@ -3,7 +3,8 @@ An android chat app built using Firebase Realtime Database and Kotlin.
 
 ## Login
 One time signup and login.
-![login](images/login.png){:height="2px" width="2px"}
+<img src="images/login.png" alt="login" height="36px" width="36px">
+
 
 ## Chat List
 Viewing all the chats with new messages, time displayed.

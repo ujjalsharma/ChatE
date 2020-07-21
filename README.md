@@ -2,23 +2,22 @@
 An android chat app built using Firebase Realtime Database and Kotlin.
 
 ## Login
-One time signup and login.
+One time signup and login.<br />
 <img src="images/login.png" alt="login" height="30%" width="30%">
 
 
 ## Chat List
-Viewing all the chats with new messages, time displayed.
-![chatlist](images/chatlist.png)
+Viewing all the chats with new messages, time displayed.<br />
+<img src="images/chatlist.png" alt="chatlist" height="30%" width="30%">
 
 ## Chat
-The chat interface with minimilastic features
-![chat](images/chat.png)
+The chat interface with minimilastic features. <br />
+<img src="images/chat.png" alt="chat" height="30%" width="30%">
 
 ## My Profile
-View your account info and to update.
-![myprofile](images/myprofile.png)
-Update interface
-![updateprofile](images/updateprofile.png)
+View your account info and to update.<br />
+<img src="images/myprofile.png" alt="myprofile" height="30%" width="30%">
+<img src="images/updateprofile.png" alt="updateprofile" height="30%" width="30%">
 
 ## View other's profile
-![otherprofile](images/otherprofile.png)
+<img src="images/otherprofile.png" alt="otherprofile" height="30%" width="30%">

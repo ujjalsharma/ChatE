@@ -29,7 +29,7 @@ class OthersProfileActivity : AppCompatActivity() {
 
         //Set up Account Information
         accountEmailTextView = findViewById(R.id.accountEmailTextView)
-        accountEmailTextView?.text = mAuth.currentUser?.email.toString()
+
         accountNameTextView = findViewById(R.id.accountNameTextView)
         aboutTextView = findViewById(R.id.aboutTextView)
         profileImage = findViewById(R.id.acc_info_profile_image)
@@ -39,6 +39,7 @@ class OthersProfileActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference().child("users").child(otherUserID!!).addValueEventListener(object:
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                accountEmailTextView?.text = snapshot.child("email").value.toString()
                 accountNameTextView?.text = snapshot.child("name").value.toString()
                 profileToolbar.title = snapshot.child("name").value.toString()
                 if (snapshot.child("about").exists()){

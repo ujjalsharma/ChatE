@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
@@ -139,6 +140,11 @@ class ChatListActivity : AppCompatActivity() {
 
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun newChatClicked(view: View) {
+        val intent = Intent(this, ChooseUserActivity::class.java)
+        startActivity(intent)
     }
 
 

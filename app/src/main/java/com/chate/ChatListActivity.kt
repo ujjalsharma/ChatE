@@ -35,7 +35,10 @@ class ChatListActivity : AppCompatActivity() {
         setSupportActionBar(chatListToolbar)
 
         chatListRV = findViewById(R.id.chatlistRV)
-        chatListRV?.setLayoutManager(LinearLayoutManager(this))
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.reverseLayout = true
+        layoutManager.stackFromEnd = true
+        chatListRV?.setLayoutManager(layoutManager)
         chatListRV?.setHasFixedSize(true)
         chatListRV?.setItemViewCacheSize(50)
 
@@ -46,14 +49,11 @@ class ChatListActivity : AppCompatActivity() {
         super.onStart()
 
 
-        FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.currentUser?.uid.toString()).child("chats").addValueEventListener(object :
-            ValueEventListener {
+        FirebaseDatabase.getInstance().getReference().child("users")
+            .child(mAuth.currentUser?.uid.toString()).child("chats")
+            .addValueEventListener(object : ValueEventListener {
 
-            @RequiresApi(Build.VERSION_CODES.O)
             override fun onDataChange(snapshot: DataSnapshot) {
-                chatsList = ArrayList()
-
-                var latestTimeStamp: Long? = null
 
                 for (chatItemsnap in snapshot.children) {
                     val chatItemID = chatItemsnap.child("chatID").value.toString()
@@ -66,35 +66,53 @@ class ChatListActivity : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 for (msnapshot in snapshot.children) {
                                     val latestTimeStampString = msnapshot.child("timestamp").value.toString()
-                                    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                                    val pasTime = dateFormat.parse(latestTimeStampString)
-                                    latestTimeStamp = pasTime!!.time
+                                    FirebaseDatabase.getInstance().getReference().child("users")
+                                        .child(mAuth.currentUser?.uid.toString()).child("chats")
+                                        .child(chatItemID).child("latestTimestamp")
+                                        .setValue(latestTimeStampString)
                                 }
                             }
 
                         })
-
-                    val chatItem = ChatItem(chatItemID, latestTimeStamp)
-                    (chatsList as ArrayList<ChatItem>).add(chatItem)
                 }
-
-
-                if (chatsList!!.isNotEmpty()){
-                    val sortedChatsList = chatsList!!.sortedWith(compareBy { it.latestTimestamp })
-                    chatAdapter = ChatItemAdapter(this@ChatListActivity,
-                        sortedChatsList as MutableList<ChatItem>
-                    )
-                    chatListRV!!.adapter = chatAdapter
-
-                }
-
-
 
             }
 
             override fun onCancelled(error: DatabaseError) {}
 
         })
+
+
+        FirebaseDatabase.getInstance().getReference().child("users")
+            .child(mAuth.currentUser?.uid.toString()).child("chats")
+            .orderByChild("latestTimestamp").addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                    chatsList = ArrayList()
+
+                    for (snap in snapshot.children) {
+                        val chatitem: ChatItem? = snap.getValue(ChatItem::class.java)
+                        (chatsList as ArrayList<ChatItem>).add(chatitem!!)
+                    }
+
+                    if (chatsList!!.isNotEmpty()){
+                        chatAdapter = ChatItemAdapter(this@ChatListActivity,
+                            chatsList as MutableList<ChatItem>
+                        )
+                        chatListRV!!.adapter = chatAdapter
+
+                    }
+
+
+                }
+
+            })
+
+
+
 
 
 

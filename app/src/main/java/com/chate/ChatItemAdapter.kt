@@ -65,6 +65,8 @@ class ChatItemAdapter(
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 for (msnapshot in dataSnapshot.children){
                                     holder.timeChatItemTV.text = messagedate(msnapshot.child("timestamp").value.toString())
+
+
                                     val message =  msnapshot.child("message").value.toString()
                                     val charCount = message.length
 

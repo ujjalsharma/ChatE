@@ -34,40 +34,46 @@ class MainActivity : AppCompatActivity() {
     fun loginClicked(view: View){
         var email = emailEditText?.text.toString()
 
-        // check if we can login the user
-        mAuth.signInWithEmailAndPassword(
+        if (nameEditText?.text.toString().isNotBlank()){
+
+            // check if we can login the user
+            mAuth.signInWithEmailAndPassword(
                 emailEditText?.text.toString(),
                 passEditText?.text.toString()
-        )
+            )
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         logIn()
                     } else {
                         //sinup the user
                         mAuth.createUserWithEmailAndPassword(
-                                emailEditText?.text.toString(),
-                                passEditText?.text.toString()
+                            emailEditText?.text.toString(),
+                            passEditText?.text.toString()
                         ).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 // Add to database
                                 FirebaseDatabase.getInstance().getReference().child("users")
-                                        .child(task.result?.user?.uid.toString()).child("email")
-                                        .setValue(emailEditText?.text.toString())
+                                    .child(task.result?.user?.uid.toString()).child("email")
+                                    .setValue(emailEditText?.text.toString())
                                 FirebaseDatabase.getInstance().getReference().child("users")
-                                        .child(task.result?.user?.uid.toString()).child("name")
-                                        .setValue(nameEditText?.text.toString())
+                                    .child(task.result?.user?.uid.toString()).child("name")
+                                    .setValue(nameEditText?.text.toString())
                                 FirebaseDatabase.getInstance().getReference().child("users")
                                     .child(task.result?.user?.uid.toString()).child("about")
                                     .setValue("Hola, I am using ChatE!")
                                 logIn()
                             } else {
                                 Toast.makeText(this, "Login Failed! Try Again!", Toast.LENGTH_SHORT)
-                                        .show()
+                                    .show()
                             }
                         }
                     }
 
                 }
+
+
+        }
+
 
     }
 

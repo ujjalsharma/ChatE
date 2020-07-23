@@ -1,5 +1,8 @@
 package com.chate
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +13,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -44,7 +48,11 @@ class ChatListActivity : AppCompatActivity() {
         chatListRV?.setItemViewCacheSize(50)
 
 
+
+
     }
+
+
 
     override fun onStart() {
         super.onStart()

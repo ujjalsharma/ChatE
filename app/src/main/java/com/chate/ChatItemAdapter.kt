@@ -67,37 +67,20 @@ class ChatItemAdapter(
                                     holder.timeChatItemTV.text = messagedate(msnapshot.child("timestamp").value.toString())
 
 
-                                    val message =  msnapshot.child("message").value.toString()
-                                    val charCount = message.length
+                                    var message =  msnapshot.child("message").value.toString()
 
                                     if (msnapshot.child("userID").value.toString()==ownID){
-                                        if (charCount>23){
-                                            holder.messageChatItemTV.text ="~ " + message.substring(0, 23) + "..."
-                                        } else {
-                                            holder.messageChatItemTV.text ="~ " + message
-                                        }
-                                    } else {
+                                        holder.messageChatItemTV.text ="~ " + message
 
+                                    } else {
                                         if (msnapshot.child("read").value==true){
-                                            if (charCount>23){
-                                                holder.messageChatItemTV.text = message.substring(0, 23) + "..."
-                                            } else {
-                                                holder.messageChatItemTV.text = message
-                                            }
+                                            holder.messageChatItemTV.text = message
                                         } else {
                                             holder.messageChatItemTV.setTypeface(holder.messageChatItemTV.getTypeface(), Typeface.BOLD)
-                                            if (charCount>23){
-                                                holder.messageChatItemTV.text = message.substring(0, 23) + "..."
-                                            } else {
-                                                holder.messageChatItemTV.text = message
-                                            }
-                                        }
-
-                                        if (charCount>23){
-                                            holder.messageChatItemTV.text = message.substring(0, 23) + "..."
-                                        } else {
                                             holder.messageChatItemTV.text = message
                                         }
+                                        holder.messageChatItemTV.text = message
+
                                     }
 
 

@@ -40,11 +40,8 @@ class ChooseUserAdapter(
 
                 if (snapshot.child("about").exists()){
                     val about = snapshot.child("about").value.toString()
-                    if (about.length > 45){
-                        holder.aboutUserTextView.text = about.substring(0, 45)    + "..."
-                    } else {
-                        holder.aboutUserTextView.text = about
-                    }
+                    holder.aboutUserTextView.text = about
+
 
                 }
 

@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
+import java.util.ArrayList
 
 class ChatItemAdapter(
     var mContext: Context,
@@ -134,6 +135,7 @@ class ChatItemAdapter(
             val intent = Intent(mContext, ChatActivity::class.java)
             intent.putExtra("chatID", chatID)
             intent.putExtra("userID", userID)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             mContext.startActivity(intent)
 
         }
@@ -202,6 +204,11 @@ class ChatItemAdapter(
 
     fun isToday(whenInMillis: Long): Boolean {
         return DateUtils.isToday(whenInMillis)
+    }
+
+    fun filterList(filterdNames: ArrayList<ChatItem>) {
+        this.mData = filterdNames
+        notifyDataSetChanged()
     }
 
 

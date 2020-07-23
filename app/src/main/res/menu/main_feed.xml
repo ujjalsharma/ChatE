@@ -12,10 +12,11 @@
         android:title="Logout"
         app:showAsAction="never" />
     <item
-        android:id="@+id/newchat"
-        android:icon="@drawable/ic_baseline_chat_bubble_24"
-        android:title="Chat List"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
 
 
 </menu>

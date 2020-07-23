@@ -74,23 +74,11 @@ class ChooseUserAdapter(
                             val chatID = "chat" + UUID.randomUUID().toString() + currentDate
 
                             FirebaseDatabase.getInstance().getReference().child("users")
-                                .child(mAuth.currentUser?.uid.toString()).child("chats").child(chatID)
-                                .child("chatID").setValue(chatID)
-                            FirebaseDatabase.getInstance().getReference().child("users")
-                                .child(mAuth.currentUser?.uid.toString()).child("chats").child(chatID)
-                                .child("userID").setValue(otherID)
-                            FirebaseDatabase.getInstance().getReference().child("users").child(otherID!!)
-                                .child("chats").child(chatID).child("chatID").setValue(chatID)
-                            FirebaseDatabase.getInstance().getReference().child("users").child(otherID!!)
-                                .child("chats").child(chatID).child("userID")
-                                .setValue(mAuth.currentUser?.uid.toString())
-
-                            FirebaseDatabase.getInstance().getReference().child("users")
                                 .child(mAuth.currentUser?.uid.toString()).child("chatUsers")
-                                .child(otherID).setValue(chatID)
+                                .child(otherID!!).setValue(chatID!!)
                             FirebaseDatabase.getInstance().getReference().child("users")
-                                .child(otherID).child("chatUsers")
-                                .child(mAuth.currentUser?.uid.toString()).setValue(chatID)
+                                .child(otherID!!).child("chatUsers")
+                                .child(mAuth.currentUser?.uid.toString()).setValue(chatID!!)
 
                             val intent = Intent(mContext, ChatActivity::class.java)
                             intent.putExtra("chatID", chatID)

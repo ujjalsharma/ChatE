@@ -110,6 +110,23 @@ class ChatActivity : AppCompatActivity() {
 
     fun sendMessageClicked(view: View){
 
+        if (messagesRecyclerView?.adapter?.itemCount==0){
+
+            FirebaseDatabase.getInstance().getReference().child("users")
+                .child(mAuth.currentUser?.uid.toString()).child("chats").child(chatID!!)
+                .child("chatID").setValue(chatID!!)
+            FirebaseDatabase.getInstance().getReference().child("users")
+                .child(mAuth.currentUser?.uid.toString()).child("chats").child(chatID!!)
+                .child("userID").setValue(otherID!!)
+            FirebaseDatabase.getInstance().getReference().child("users").child(otherID!!)
+                .child("chats").child(chatID!!).child("chatID").setValue(chatID!!)
+            FirebaseDatabase.getInstance().getReference().child("users").child(otherID!!)
+                .child("chats").child(chatID!!).child("userID")
+                .setValue(mAuth.currentUser?.uid.toString())
+
+
+        }
+
         val message = messageEditText?.text.toString()
         messageEditText?.setText("")
         if (message.isNotBlank()) {
@@ -139,6 +156,8 @@ class ChatActivity : AppCompatActivity() {
                 Toast.makeText(this, "Some Problem occured!", Toast.LENGTH_SHORT).show()
             }
         }
+
+
 
     }
 

@@ -115,5 +115,10 @@ class ChooseUserAdapter(
         }
     }
 
+    fun filterList(filterdNames: ArrayList<String>) {
+        this.mData = filterdNames
+        notifyDataSetChanged()
+    }
+
 
 }

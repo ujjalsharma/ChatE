@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/white"
+            app:collapseIcon="@drawable/ic_baseline_arrow_back_24"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="Choose User"
             app:titleTextColor="@android:color/black" />

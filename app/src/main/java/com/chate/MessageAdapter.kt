@@ -2,6 +2,7 @@ package com.chate
 
 import android.content.Context
 import android.text.format.DateUtils
+import android.text.util.Linkify
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +63,6 @@ class MessageAdapter(
             holder.messageRL.setPadding(80, 20,20,20)
             holder.messageItemLL.background = mContext.resources.getDrawable(R.drawable.box_msg_you)
         }
-
 
     }
 

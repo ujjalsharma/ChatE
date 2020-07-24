@@ -40,6 +40,8 @@
             android:id="@+id/messageItemTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:textColorLink="#3F51B5"
             android:text="message"
             android:textColor="#000000"
             android:textSize="14sp" />

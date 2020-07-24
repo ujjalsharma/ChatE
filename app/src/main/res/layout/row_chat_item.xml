@@ -68,7 +68,6 @@
                 android:id="@+id/chat_message_item_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="timestamp"
                 android:layout_gravity="bottom"
                 android:textSize="10sp" />
 

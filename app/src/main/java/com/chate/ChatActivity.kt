@@ -91,7 +91,7 @@ class ChatActivity : AppCompatActivity() {
                     val message = messagesnap.getValue(Message::class.java)
                     (messageList as java.util.ArrayList<Message>).add(message!!)
                 }
-                messageAdapter = MessageAdapter(applicationContext,
+                messageAdapter = MessageAdapter(this@ChatActivity,
                     messageList as MutableList<Message>
                 )
 

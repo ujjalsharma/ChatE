@@ -52,7 +52,7 @@ class ChooseUserActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        FirebaseDatabase.getInstance().getReference().child("users").addValueEventListener(object :
+        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("name").addValueEventListener(object :
             ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -67,7 +67,6 @@ class ChooseUserActivity : AppCompatActivity() {
                     }
 
                 }
-                chooseUserList = (chooseUserList as ArrayList<String>).reversed().toMutableList()
                 chooseUserAdapter = ChooseUserAdapter(this@ChooseUserActivity,
                     chooseUserList as MutableList<String>
                 )

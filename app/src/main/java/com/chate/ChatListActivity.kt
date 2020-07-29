@@ -153,6 +153,7 @@ class ChatListActivity : AppCompatActivity() {
                     filter(text!!)
                 } else {
                     chatAdapter!!.filterList(chatsList!! as ArrayList<ChatItem>)
+                    chatListRV!!.adapter = chatAdapter
                     chatListRV!!.scrollToPosition(chatListRV!!.adapter!!.itemCount-1)
                 }
 
@@ -195,6 +196,7 @@ class ChatListActivity : AppCompatActivity() {
         }
 
         chatAdapter!!.filterList(filterdNames)
+        chatListRV!!.adapter = chatAdapter
 
 
 
@@ -230,6 +232,7 @@ class ChatListActivity : AppCompatActivity() {
 
         if (!searchView!!.isIconified()) {
             chatAdapter!!.filterList(chatsList!! as ArrayList<ChatItem>)
+            chatListRV!!.adapter = chatAdapter
             chatListRV!!.scrollToPosition(chatListRV!!.adapter!!.itemCount-1)
             searchView!!.setIconified(true);
             searchView!!.setIconified(true);
